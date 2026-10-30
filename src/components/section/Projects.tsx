@@ -5,7 +5,7 @@ import { useThemeColors } from '../../hooks/useThemeColors';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { TooltipProvider } from '../ui/tooltip';
-import { ExternalLink, Code, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { socialLinks } from '../../config/socialLinks';
 import { lightStars, darkStars, specialStars } from '../../assets/stars';
 import { comingSoon } from '../../assets';
@@ -538,10 +538,7 @@ const Projects = () => {
                       <ExternalLink className="h-4 w-4" aria-hidden="true" />
                       Details
                     </Link>
-                    <a href={project.githubUrl} className="project-btn-outline flex items-center gap-1" style={{ textDecoration: 'none' }} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code on GitHub`}>
-                      <Code className="h-4 w-4" aria-hidden="true" />
-                      Code
-                    </a>
+
                   </div>
                 </CardContent>
               </Card>
@@ -591,10 +588,7 @@ const Projects = () => {
                       <ExternalLink className="h-4 w-4" aria-hidden="true" />
                       Details
                     </div>
-                    <div className="project-btn-outline flex items-center gap-1" style={{ pointerEvents: 'none' }}>
-                      <Code className="h-4 w-4" aria-hidden="true" />
-                      Code
-                    </div>
+
                   </div>
                 </CardContent>
               </Card>
