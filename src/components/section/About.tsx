@@ -7,7 +7,6 @@ import { useDarkMode } from '../../contexts/DarkModeContext';
 import { useThemeColors, withAlpha } from '../../hooks/useThemeColors';
 import { aboutMeJournalWebp800, aboutMeJournalWebp400, profile1, profile2, profile3, profile4, profile5, profile6, profile7, stickers as stickerImages } from '../../assets';
 
-
 const About = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [asciiText, setAsciiText] = useState('');
@@ -22,7 +21,7 @@ const About = () => {
   // Each spread = one photo page + one text page. Edit the text here.
   const spreads = [
     { imageSide: 'left', imageIndexes: [0, 2], title: 'About me', text: 'I am a senior at the University of San Francisco (USF), double majoring in Physics and General Engineering with a concentration in Sustainable Environments Engineering. I am passionate about exploring innovative, sustainable approaches to the technologies shaping the future of our infrastructure. ' },
-    { imageSide: 'right', imageIndexes: [1], title: 'What I love', text: ' As a Colombian American who grew up in Wisconsin, I am passionate about travel and making connections. I can always recommend the best workspaces, cafés, and restaurants, from Madison to Bogotá, Colombia. (Next stop: Patagonia!)' },
+    { imageSide: 'right', imageIndexes: [1], title: 'What I love', text: ' Growing up in Wisconsin in a Colombian American family has given me an appreciation for different cultures, communities, and ways of seeing the world. Travel allows me to explore how people live, how cities evolve, and how the spaces around us shape our experiences. Outside the lab and the field, you will usually find me exploring a new city or searching for a great café.' },
     { imageSide: 'left', imageIndexes: [3, 4], title: 'Field work', text: 'As a double major, I have had the opportunity to conduct research in both astronomy, through distant-object detection, and quantum optics, through laser laboratory experiments in the physics department. In engineering, I have presented environmental research projects at university engineering exhibitions and gained hands-on experience working on civil construction sites as an intern. ' },
     { imageSide: 'right', imageIndexes: [5, 6], title: 'My Involvement', text: 'Attending a smaller university like USF has provided incredible opportunities for personal and professional growth. As a founder and president of student organizations, including the Society of Women Engineers (SWE) and our Latino STEM organization, Hispanics in STEM Societies (HISS), I have connected with professionals and underclassmen by promoting professional development and helping others build their networking skills. Through plenty of trial and error, I am incredibly proud to have become a mentor to other students.' },
   ];
