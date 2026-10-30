@@ -107,15 +107,17 @@ const Navigation = () => {
         <button className="signature-name"
           style={{ 
             cursor: 'pointer', 
-            color: themeColors.colors.pink[500], 
+            color: isDarkMode ? '#E8D0BE' : '#632024', 
             background: 'none', 
             border: 'none',
             outline: 'none',
-            WebkitTextFillColor: themeColors.colors.pink[500]
+            textShadow: 'none',
+            filter: 'none',
+            WebkitTextFillColor: isDarkMode ? '#E8D0BE' : '#632024'
           }}
           onClick={() => window.location.href = '/'}
-          aria-label="Your Name - Go to homepage">
-          Your Name
+          aria-label="Celeste Heberer - Go to homepage">
+          Celeste Heberer
         </button>
         
         {/* Desktop Navigation */}

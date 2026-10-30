@@ -7,6 +7,20 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+  pink: {
+    50:  '#F7EFE8',
+    100: '#F0E2D6',
+    200: '#E8D0BE',
+    300: '#D8A48F',
+    400: '#BB8588',
+    500: '#A06A6E',
+    600: '#8A4A50',
+    700: '#76383D',
+    800: '#632024',
+    900: '#4A181B',
+  },
+},
       animation: {
         'fade-in': 'fadeIn 1s ease-in-out',
         'bounce': 'bounce 2s infinite',

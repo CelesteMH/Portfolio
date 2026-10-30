@@ -4,8 +4,8 @@ import { useDarkMode } from '../../contexts/DarkModeContext';
 import { useThemeColors } from '../../hooks/useThemeColors';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
-import { ExternalLink, Code, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
+import { TooltipProvider } from '../ui/tooltip';
+import { ExternalLink, Code, ChevronLeft, ChevronRight } from 'lucide-react';
 import { socialLinks } from '../../config/socialLinks';
 import { lightStars, darkStars, specialStars } from '../../assets/stars';
 import { comingSoon } from '../../assets';
@@ -228,39 +228,77 @@ const Projects = () => {
 
   // project data - these are the main cards
   const projects = [
-    {
-      title: "Project One",
-      description: "A brief description of your first project. Highlight the key features and what makes it unique.",
-      technologies: ["React", "TypeScript", "Node.js", "MongoDB"],
-      icon: comingSoon,
-      detailsUrl: "/projects/project-one",
-      githubUrl: socialLinks.repositories.projectOne
-    },
-    {
-      title: "Project Two",
-      description: "A brief description of your second project. Highlight the key features and what makes it unique.",
-      technologies: ["Python", "Flask", "PostgreSQL", "Docker"],
-      icon: comingSoon,
-      detailsUrl: "/projects/project-two",
-      githubUrl: socialLinks.repositories.projectTwo
-    },
-    {
-      title: "Project Three",
-      description: "A brief description of your third project. Highlight the key features and what makes it unique.",
-      technologies: ["JavaScript", "Express", "AWS", "Tailwind CSS"],
-      icon: comingSoon,
-      detailsUrl: "/projects/project-three",
-      githubUrl: socialLinks.repositories.projectThree
-    },
-    {
-      title: "Project Four",
-      description: "A brief description of your fourth project. Highlight the key features and what makes it unique.",
-      technologies: ["C++", "CMake", "OpenGL"],
-      icon: comingSoon,
-      detailsUrl: "/projects/project-four",
-      githubUrl: socialLinks.repositories.projectFour
-    }
-  ];
+  {
+    title: "Sustainable Water Monitoring System",
+    description: [
+      "Developed a deployable sensor system to monitor water flow, humidity, and air/water temperature, enabling researchers and farmers at Star Route Farms to track river conditions and optimize water storage",
+      "Conducted research on Algae Assisted Microbial Fuel Cells (MFC's), which convert chemical energy into bioelectricity through the catalytic activity of living microbes found onsite"
+    ],
+    technologies: ["Arduino IDE", "Technical Research", "Data Analysis"],
+    detailsUrl: "/projects/Sustainable_Water_Monitoring_System",
+    githubUrl: socialLinks.repositories.projectOne
+  },
+  {
+    title: "Single Photon Quantum Optics",
+    description: [
+      "Examined correlations between photodetections at transmission and reflection outputs to experimentally demonstrate both classical and quantum mechanical fields of light through coincidence programming of individual photocounts",
+      "Optimized experimental equipment including an entangled photon source, optical components, and three photon-counting silicon photodetectors",
+      "Applied normalized intensity correlation functions to identify Poissonian and anti-Poissonian photon distributions and compare classical vs. quantum behavior"
+    ],
+    technologies: ["Quantum Optics", "Python", "Data Analysis", "Technical Writing"],
+    detailsUrl: "/projects/Single_Photon_Quantum_Optics",
+    githubUrl: socialLinks.repositories.projectTwo
+  },
+  {
+    title: "Reusable Concrete and COB Molds",
+    description: [
+      "Designed reusable and sustainable molds for COB and concrete fabrication processes to reduce material waste and prevent damage to samples during testing",
+      "Developed 9 concrete mold designs with 5 lining options, including dissolvable, reusable, and removable materials"
+    ],
+    technologies: ["Autodesk (Fusion, AutoCAD)", "Technical Writing", "Materials Testing"],
+    detailsUrl: "/projects/Reusable_Concrete_and_COB_Molds",
+    githubUrl: socialLinks.repositories.projectThree
+  },
+
+  {
+    title: "Tannin-Furanic Rigid Foam Insulation Research Project",
+    description: [
+      "Composed a research paper on optimizing and promoting commercially viable bio-based tannin-furanic rigid foams as sustainable alternatives to petroleum-based insulation.",     
+      "Assessed the effects of catalysts, metal-ion modifiers, and solvent systems on foam uniformity, mechanical strength, and long-term weathering stability",
+      "Synthesized findings from case studies on foam formulation, porosity, compression behavior, and VOC reduction to identify pathways toward 100% bio-based insulation",
+    ],
+    technologies: ["Technical Writing", "Design Research", "Data Analysis", "Market Evaluation", "Public Speaking"],
+    detailsUrl: "/projects/TanninFuranic_Rigid_Foam_Insulation_Research_Project",
+    githubUrl: socialLinks.repositories.projectTwo
+  },
+
+  {
+    title: "Historical Project: Hydro-Electric Power in Brazil",
+    description: [
+      "Conducted extensive research on historical hydro-electric models to design a system that optimized water resource usage while maintaining feasibility with 1930s technology",
+      "Engineered a working prototype capable of powering an attached coffee grinder, demonstrating the viability of renewable energy in rural industries.",
+      "Focused on mass production efficiency and economic revitalization, helping farmers transition from raw material exports to a fully integrated value-added production model", ],
+    technologies: ["Autodesk (Fusion, AutoCAD)", "Arduino IDE", "Historical Research", "3D Modeling/Printing"],
+    detailsUrl: "/projects/Historical_Project_HydroElectric_Power_in_Brazil",
+    githubUrl: socialLinks.repositories.projectTwo
+  },
+
+
+  {
+    title: "Dual-Sided Rotor EV Engine Research Project",
+    description: [
+      "Conducted a 4-month research study on the dual-sided rotor design for synchronous reluctance motors, focusing on efficiency improvements and rare-earth material reduction",      
+      "Analyzed the magnetic material reallocation strategy, which shifted materials from the stator to the rotor, addressing performance trade-offs and inductance challenges",
+      "Developed and delivered a technical presentation, breaking down the motor's design software, calculation analysis, and FEMM modeling insights, alongside a comparative study with the SRM2 model",    ],
+    technologies: ["Design Research", "Public Speaking", "Data Analysis"],
+    detailsUrl: "/projects/DualSided_Rotor_EV_Engine_Research_Project",
+    githubUrl: socialLinks.repositories.projectTwo
+  },
+
+
+];
+    
+
 
   // Calculate carousel pagination
   const totalPages = Math.ceil(projects.length / projectsPerPage);
@@ -370,7 +408,7 @@ const Projects = () => {
           style={{
             fontFamily: "'DK Crayonista', cursive",
             fontSize: '26px',
-            color: isDarkMode ? '#FDD5DF' : '#ec4899',
+            color: isDarkMode ? '#E8D0BE' : '#BB8588',
             fontWeight: 'bold',
             userSelect: 'none',
             textShadow: '1px 1px 2px rgba(0,0,0,0.1)'
@@ -419,7 +457,7 @@ const Projects = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex items-center justify-center gap-1 mb-4">
             <h2 className="text-4xl font-bold" style={{ color: isDarkMode ? themeColors.colors.white : themeColors.colors.pink[500] }}>Projects</h2>
-            <Tooltip>
+            {/* <Tooltip>
               <TooltipTrigger asChild>
                 <button 
                   className="inline-flex items-center justify-center bg-transparent border-none outline-none focus:outline-none" 
@@ -438,7 +476,7 @@ const Projects = () => {
               <TooltipContent className="bg-white text-gray-800 border-pink-200">
                 <p>all favicons created by me!</p>
               </TooltipContent>
-            </Tooltip>
+            </Tooltip> */}
           </div>
           <p className="text-center mb-12 text-lg text-gray-600 dark:text-gray-300">
             Here are some of the projects I've worked on recently
@@ -459,7 +497,7 @@ const Projects = () => {
               }} aria-label={`${project.title} project`}>
                 <CardHeader>
                   <div className="flex items-start gap-3">
-                    {project.icon && (
+                    {/* {project.icon && (
                       <img
                         src={project.icon}
                         alt={`${project.title} icon`}
@@ -468,14 +506,16 @@ const Projects = () => {
                         width="48"
                         height="48"
                       />
-                    )}
+                    )}  */}
                     <div className="flex-1">
                       <CardTitle className="text-xl dark:text-gray-100 transition-colors group-hover:!text-pink-500 dark:group-hover:!text-pink-400">
                         {project.title}
                       </CardTitle>
-                      <CardDescription className="text-gray-600 dark:text-gray-300 mt-2">
-                        {project.description}
-                      </CardDescription>
+                     <ul className="list-disc pl-5 mt-2 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                        {project.description.map((point, i) => (
+                          <li key={i}>{point}</li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </CardHeader>

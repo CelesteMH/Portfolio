@@ -8,34 +8,37 @@ const Experience = () => {
   const themeColors = useThemeColors();
   const experiences = [
     {
-      title: "Your Job Title",
-      company: "Company Name",
-      location: "City, State",
-      period: "Month Year - Month Year",
+      title: "Research Assistant",
+      company: "USF Physics/Astronomy Department",
+      location: "San Francisco, California",
+      period: "August 2026 - Present",
       description: [
-        "Description of your role and accomplishments",
+        "Building and validating a Trans-Neptunian Object (TNO) detection service through pipeline-development efforts using archival astronomical observations ",
+        "Develop a scalable, AI-assisted discovery framework that can combine archival mining, automated source classification, human-in-loop verification and targeted follow-ups for recovering known objects towards the discovery of new sources.",
       ]
     },
     {
-      title: "Your Job Title",
-      company: "Company Name",
-      location: "City, State",
-      period: "Month Year - Month Year",
+      title: "Field Engineer Intern (Civil Group)",
+      company: "Mortenson",
+      location: "Sparks, Nevada",
+      period: "June 2026 - August 2026",
       description: [
-        "Description of your role and accomplishments",
-        "Another accomplishment or responsibility",
-        "One more key achievement",
+        "Supported 2 heavy-civil project sites, splitting time between field and office operations while conducting daily inspections, coordinating subcontractors, and tracking site progress with project schedules",    
+        "Developed Integrated Work Plans (IWPs) for each stage of construction and presented plans to equipment operators, improving communication of site priorities and safety expectations across active crews",
+        "Collaborated with foremen and superintendents on daily scheduling, site planning, cost estimating, and quantity takeoffs for both projects, providing field and office teams with the information needed to track project needs",
+        "Served as a primary communication link between operators, subcontractors, and office staff, relaying real-time field conditions, progress updates, and project information to leadership to support timely coordination and decision-making",
       ]
     },
     {
-      title: "Your Job Title",
-      company: "Company Name",
-      location: "City, State",
-      period: "Month Year - Month Year",
+      title: "Teaching Assistant: Physics For Engineers",
+      company: "USF Engineering/Physics Department",
+      location: "San Francisco, California",
+      period: "January 2025 - May 2025",
       description: [
-        "Description of your role and accomplishments",
-        "Another accomplishment or responsibility",
-        "One more key achievement",
+        "Develop, update, and grade weekly homework assignments for 33 students",       
+        "Host office hours to guide students through conceptual topics and coursework", 
+        "Attend weekly meetings with the professor to discuss new topics, lecture styles, student development, and potential course adjustments",
+      
       ]
     }
   ];

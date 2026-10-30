@@ -65,12 +65,20 @@ Add your profile images to `src/assets/`:
 - `profile1.jpg`
 - `profile2.jpg`
 - `profile3.jpg`
+- `profile4.jpeg`
+- `profile5.jpeg`
+- `profile6.jpeg`
+- `profile7.jpeg`
 
 Then uncomment the imports in `src/assets/index.ts`:
 ```ts
 import profile1 from './profile1.jpg';
 import profile2 from './profile2.jpg';
 import profile3 from './profile3.jpg';
+import profile4 from './profile4.jpeg';
+import profile5 from './profile5.jpeg';
+import profile6 from './profile6.jpeg';
+import profile7 from './profile7.jpeg';
 ```
 
 Update the captions in `src/components/section/About.tsx`:
@@ -78,7 +86,11 @@ Update the captions in `src/components/section/About.tsx`:
 const profileImages = [
   { src: profile1, caption: "your caption" },
   { src: profile2, caption: "your caption" },
-  { src: profile3, caption: "your caption" }
+  { src: profile3, caption: "your caption" },
+  { src: profile4, caption: "your caption" },
+  { src: profile5, caption: "your caption" },
+  { src: profile6, caption: "your caption" },
+  { src: profile7, caption: "your caption" }
 ];
 ```
 

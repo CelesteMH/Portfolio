@@ -5,7 +5,7 @@ import AsciiMorphText from '../AsciiMorphText';
 import TypewriterCarousel from '../TypewriterCarousel';
 import { useDarkMode } from '../../contexts/DarkModeContext';
 import { useThemeColors, withAlpha } from '../../hooks/useThemeColors';
-import { aboutMeJournalWebp800, aboutMeJournalWebp400, profile1, profile2, profile3, stickers as stickerImages } from '../../assets';
+import { aboutMeJournalWebp800, aboutMeJournalWebp400, profile1, profile2, profile3, profile4, profile5, profile6, profile7, stickers as stickerImages } from '../../assets';
 
 
 const About = () => {
@@ -14,33 +14,83 @@ const About = () => {
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentSpread, setCurrentSpread] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const { isDarkMode } = useDarkMode();
   const themeColors = useThemeColors();
 
+  // Each spread = one photo page + one text page. Edit the text here.
+  const spreads = [
+    { imageSide: 'left', imageIndexes: [0, 2], title: 'About me', text: 'I am a senior at the University of San Francisco (USF), double majoring in Physics and General Engineering with a concentration in Sustainable Environments Engineering. I am passionate about exploring innovative, sustainable approaches to the technologies shaping the future of our infrastructure. ' },
+    { imageSide: 'right', imageIndexes: [1], title: 'What I love', text: ' As a Colombian American who grew up in Wisconsin, I am passionate about travel and making connections. I can always recommend the best workspaces, cafés, and restaurants, from Madison to Bogotá, Colombia. (Next stop: Patagonia!)' },
+    { imageSide: 'left', imageIndexes: [3, 4], title: 'Field work', text: 'As a double major, I have had the opportunity to conduct research in both astronomy, through distant-object detection, and quantum optics, through laser laboratory experiments in the physics department. In engineering, I have presented environmental research projects at university engineering exhibitions and gained hands-on experience working on civil construction sites as an intern. ' },
+    { imageSide: 'right', imageIndexes: [5, 6], title: 'My Involvement', text: 'Attending a smaller university like USF has provided incredible opportunities for personal and professional growth. As a founder and president of student organizations, including the Society of Women Engineers (SWE) and our Latino STEM organization, Hispanics in STEM Societies (HISS), I have connected with professionals and underclassmen by promoting professional development and helping others build their networking skills. Through plenty of trial and error, I am incredibly proud to have become a mentor to other students.' },
+  ];
+
   const roles = [
-    'Software Engineer',
-    'Full-Stack Developer',
-    'Systems Engineer',
-    'Frontend Developer',
+    'Research Assistant',
+    'Physics Student',
+    'Field Engineer Intern',
+    'Barista',
+    'Teaching Assistant',
+    'Engineering Student',
+    'Private Tutor',
   ];
 
   const profileImages = [
-    { src: profile1, caption: "photo 1" },
-    { src: profile2, caption: "photo 2" },
-    { src: profile3, caption: "photo 3" }
+    { src: profile1, caption: "" },
+    { src: profile2, caption: "" },
+    { src: profile3, caption: "" },
+    { src: profile4, caption: "" },
+    { src: profile5, caption: "" },
+    { src: profile6, caption: "" }, 
+    { src: profile7, caption: "" }, 
   ];
+  // Each spread = one photo page + one text page. Edit the text here.
 
-  const fullAsciiArt = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⢠⡾⠲⠶⣤⣀⣠⣤⣤⣤⡿⠛⠿⡴⠾⠛⢻⡆⠀⠀⠀
-⠀⠀⠀⣼⠁⠀⠀⠀⠉⠁⠀⢀⣿⠐⡿⣿⠿⣶⣤⣤⣷⡀⠀⠀
-⠀⠀⠀⢹⡶⠀⠀⠀⠀⠀⠀⠈⢯⣡⣿⣿⣀⣰⣿⣦⢂⡏⠀⠀
-⠀⠀⢀⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠹⣍⣭⣾⠁⠀⠀
-⠀⣀⣸⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣸⣧⣤⡀
-⠈⠉⠹⣏⡁⠀⢸⣿⠀⠀⠀⢀⡀⠀⠀⠀⣿⠆⠀⢀⣸⣇⣀⠀
-⠀⠐⠋⢻⣅⡄⢀⣀⣀⡀⠀⠯⠽⠂⢀⣀⣀⡀⠀⣤⣿⠀⠉⠀
-⠀⠀⠴⠛⠙⣳⠋⠉⠉⠙⣆⠀⠀⢰⡟⠉⠈⠙⢷⠟⠈⠙⠂⠀
-⠀⠀⠀⠀⠀⢻⣄⣠⣤⣴⠟⠛⠛⠛⢧⣤⣤⣀⡾⠀⠀⠀⠀⠀`;
+
+  const spread = spreads[currentSpread];
+  const flipPrev = () => setCurrentSpread((s) => Math.max(0, s - 1));
+  const flipNext = () => setCurrentSpread((s) => Math.min(spreads.length - 1, s + 1));
+  const flipButtonStyle = (disabled: boolean): React.CSSProperties => ({
+    flexShrink: 0,
+    width: 'clamp(32px, 5vw, 48px)',
+    height: 'clamp(32px, 5vw, 48px)',
+    borderRadius: '9999px',
+    border: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    opacity: disabled ? 0.3 : 1,
+    backgroundColor: isDarkMode ? themeColors.colors.pink[300] : themeColors.colors.pink[400],
+    color: isDarkMode ? themeColors.colors.dark[900] : themeColors.colors.white,
+    boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+    transition: 'transform 0.2s, opacity 0.2s'
+  });
+  const fullAsciiArt = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣿⣿⣿⣿⣿⣧⣤⣤⣤⣤⣤⣤⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣀⡀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⢨⣬⠛⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⡀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⢸⣿⣿⣷⣶⣉⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⡇⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⢸⣿⣿⣿⣿⣿⣷⣮⣭⠛⢻⣿⣿⣿⣿⣿⣿⢸⣿⣿⣿⣿⡇⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⢸⣿⣿⡿⠉⠹⣿⣿⣿⣿⣷⣶⣉⣹⣿⣿⣿⢸⣿⣿⣉⠶⠆⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⢸⣿⣿⡇⠀⠀⠛⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿⣿⣤⠛⠃⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⢸⣿⣿⣷⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿⣿⠶⣉⡁⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⠀⠀⢸⣿⣿⢸⣿⣿⣿⣷⠀⠀⢠⣼⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿⣿⠚⣤⡄⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣾⣿⣿⣿⣶⣎⣉⠿⢿⣿⣿⣿⣿⣷⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿⣿⣿⣿⠇⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⣿⣿⣿⣿⣿⣶⣮⣭⠛⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿⣿⡟⣥⡄⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠸⠉⠀⣀⡀⠀⠀⠈⠙⠿⢿⣿⣿⣿⠿⢷⣶⣉⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢸⡿⣩⣾⣿⣿⣿⣶⡆
+⠀⠀⠀⠀⠀⠀⢾⠃⠀⠀⠀⠛⠀⠀⣤⡄⠀⠀⠀⠈⠛⢿⣿⣧⣬⠛⣿⣧⣬⠛⢻⣿⣿⣿⣿⣿⣿⢠⣽⣿⣿⣿⣿⣿⣿⡇
+⠀⠀⠀⠀⣶⠆⠀⠀⠀⠿⠁⠀⣀⡀⠉⠀⠀⡶⠄⠀⠀⠀⠈⠉⠿⢿⣶⣾⣿⣿⣷⣶⣉⡻⠿⢏⣉⣾⣿⣿⣿⣿⣿⣿⠿⠇
+⠀⠒⣤⡀⠀⠀⠀⡞⠂⠀⠀⠀⠋⠀⠀⣤⠀⠁⠀⠀⡟⠀⠀⠀⠀⠈⠉⠛⢻⣿⣿⣿⣿⣷⣷⣬⠛⢻⣿⣿⣿⠛⠋⠁⠀⠀
+⠀⠀⠈⠛⠿⢴⣄⡀⠀⠀⠟⠶⢆⣀⠀⠁⠀⢠⡦⠀⠀⠀⠸⠏⠀⢀⣀⠀⠀⠀⠋⠿⢿⣿⣀⣾⣿⣷⡄⠋⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠈⠉⠛⢶⣤⡄⠀⠀⠉⠒⢢⣤⠈⠀⠀⢰⠖⠀⠀⠀⠘⠁⠀⢠⡄⠀⠀⠀⠉⠻⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠿⢶⣄⡀⠀⠀⠉⠱⠦⠀⠀⠀⠸⠉⠀⢀⡀⠈⠀⠀⠀⠀⠀⠀⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⢲⣤⡄⠀⠀⠀⣶⠂⠀⠀⠀⠛⠁⠀⠀⠀⠀⠀⠀⢀⣿⣿⠛⠃⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⠶⣄⣀⠀⠀⠿⠁⠀⠀⠀⠀⢀⣀⡶⠾⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⢲⣦⣄⠀⠀⢀⣤⣶⠚⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠁⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`;
 
   // Typewriter effect for ASCII art
   useEffect(() => {
@@ -213,7 +263,7 @@ const About = () => {
           <div className="flex flex-col md:flex-row justify-between items-start max-w-6xl mx-auto gap-8">
             <div className="text-left w-full md:w-auto">
               <div className="ascii-container justify-start text-3xl md:text-4xl lg:text-5xl">
-                <AsciiMorphText text="Hi, I'm Your Name" />
+                <AsciiMorphText text="Hi, I'm Celeste Heberer" />
               </div>
               <div className="hero-subtitle justify-start text-base md:text-lg lg:text-xl mt-2">
                 <div className="flex flex-wrap items-center justify-start">
@@ -238,7 +288,7 @@ const About = () => {
                 </Link>
               </div>
             </div>
-            <div className="hidden md:block" style={{ fontSize: '0.8rem', lineHeight: '1', fontFamily: 'monospace', minHeight: '150px', color: isDarkMode ? themeColors.primary : themeColors.colors.pink[500] }}>
+            <div className="hidden md:block" style={{ fontSize: '0.65rem', lineHeight: '1', fontFamily: 'monospace', minHeight: '150px', color: isDarkMode ? themeColors.primary : themeColors.colors.pink[500] }}>
               <pre>{asciiText}</pre>
             </div>
           </div>
@@ -275,26 +325,144 @@ const About = () => {
             </div>
 
             {/* About Me Journal Image */}
-            <div className="w-full md:max-w-2xl lg:max-w-4xl relative z-20 px-1 md:px-0">
-              <picture>
-                <source
-                  srcSet={`${aboutMeJournalWebp400} 400w, ${aboutMeJournalWebp800} 800w`}
-                  sizes="(max-width: 375px) 320px, (max-width: 480px) 400px, (max-width: 768px) 450px, 800px"
-                  type="image/webp"
-                />
-                {/* fallback for browsers that dont support webp */}
-                <img
-                  src={aboutMeJournalWebp400}
-                  alt="Journal page with handwritten personal introduction and interests"
-                  className="w-full h-auto object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setShowProfileModal(true)}
-                  width="400"
-                  height="300"
-                  fetchPriority="high"
-                  loading="eager"
-                  style={{ maxWidth: '100%', height: 'auto' }}
-                />
-              </picture>
+            {/* About Me Journal Image with photos laid over the pages */}
+                        {/* Notebook with flip buttons */}
+            <div className="w-full md:max-w-2xl lg:max-w-4xl relative z-20 px-1 md:px-0 flex items-center gap-1 md:gap-3">
+              <button
+                type="button"
+                onClick={flipPrev}
+                disabled={currentSpread === 0}
+                aria-label="Flip to previous page"
+                title="Previous page"
+                className="hover:scale-110"
+                style={flipButtonStyle(currentSpread === 0)}
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+
+              <div className="relative flex-1 min-w-0">
+                <picture>
+                  <source
+                    srcSet={`${aboutMeJournalWebp400} 400w, ${aboutMeJournalWebp800} 800w`}
+                    sizes="(max-width: 375px) 320px, (max-width: 480px) 400px, (max-width: 768px) 450px, 800px"
+                    type="image/webp"
+                  />
+                  <img
+                    src={aboutMeJournalWebp400}
+                    alt="Open journal"
+                    className="w-full h-auto object-contain"
+                    width="400"
+                    height="300"
+                    fetchPriority="high"
+                    loading="eager"
+                    style={{ maxWidth: '100%', height: 'auto' }}
+                  />
+                </picture>
+
+                <div key={currentSpread} className="animate-fadeIn" style={{ position: 'absolute', inset: 0 }}>
+                  {/* Photo page */}
+                    
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '12%',
+                      left: spread.imageSide === 'left' ? '8%' : '53%',
+                      width: '39%',
+                      height: '76%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '4%'
+                    }}
+                  >
+                    {spread.imageIndexes.map((imgIdx, n) => (
+                      <button
+                        key={imgIdx}
+                        type="button"
+                        onClick={() => {
+                          setCurrentImageIndex(imgIdx);
+                          setShowProfileModal(true);
+                        }}
+                        aria-label={`View photo: ${profileImages[imgIdx].caption}`}
+                        title="Click to enlarge"
+                        className="transition-all duration-200 hover:brightness-110"
+                        style={{
+                          flex: 1,
+                          minHeight: 0,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          background: '#FFFFFF',
+                          padding: '3% 3% 1%',
+                          border: 'none',
+                          cursor: 'pointer',
+                          boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+                          transform: `rotate(${n % 2 === 0 ? -2 : 2}deg)`
+                        }}
+                      >
+                        <img
+                          src={profileImages[imgIdx].src}
+                          alt={profileImages[imgIdx].caption}
+                          style={{ flex: 1, minHeight: 0, width: '100%', objectFit: 'cover', display: 'block' }}
+                        />
+                        <span
+                          style={{
+                            fontFamily: "'DK Crayonista', cursive",
+                            fontSize: 'clamp(8px, 1.3vw, 16px)',
+                            color: '#25344F',
+                            padding: '2% 0 1%',
+                            lineHeight: 1.1
+                          }}
+                        >
+                          {profileImages[imgIdx].caption}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Text page */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '12%',
+                      left: spread.imageSide === 'left' ? '53%' : '8%',
+                      width: '39%',
+                      height: '76%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      overflowY: 'auto',
+                      padding: '0 3%',
+                      color: '#25344F'
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontFamily: "'DK Crayonista', cursive",
+                        fontSize: 'clamp(11px, 2.2vw, 26px)',
+                        color: '#632024',
+                        margin: '0 0 4%',
+                        lineHeight: 1.1
+                      }}
+                    >
+                      {spread.title}
+                    </h3>
+                    <p style={{ fontSize: 'clamp(8px, 1.3vw, 15px)', lineHeight: 1.4, margin: 0 }}>
+                      {spread.text}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={flipNext}
+                disabled={currentSpread === spreads.length - 1}
+                aria-label="Flip to next page"
+                title="Next page"
+                className="hover:scale-110"
+                style={flipButtonStyle(currentSpread === spreads.length - 1)}
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
             </div>
           </div>
         </div>
@@ -357,7 +525,7 @@ const About = () => {
                 style={{
                   backgroundColor: isDarkMode ? withAlpha(themeColors.colors.dark[700], 0.9) : withAlpha(themeColors.colors.white, 0.8),
                   color: isDarkMode ? themeColors.colors.white : themeColors.colors.dark[700],
-                  border: isDarkMode ? '2px solid #374151' : 'none',
+                  border: isDarkMode ? '2px solid #617891' : 'none',
                   boxShadow: isDarkMode ? `0 4px 12px ${withAlpha(themeColors.colors.black, 0.6)}` : undefined
                 } as React.CSSProperties}
                 aria-label="Previous image"
@@ -371,7 +539,7 @@ const About = () => {
                 style={{
                   backgroundColor: isDarkMode ? withAlpha(themeColors.colors.dark[700], 0.9) : withAlpha(themeColors.colors.white, 0.8),
                   color: isDarkMode ? themeColors.colors.white : themeColors.colors.dark[700],
-                  border: isDarkMode ? '2px solid #374151' : 'none',
+                  border: isDarkMode ? '2px solid #617891' : 'none',
                   boxShadow: isDarkMode ? `0 4px 12px ${withAlpha(themeColors.colors.black, 0.6)}` : undefined
                 } as React.CSSProperties}
                 aria-label="Next image"

@@ -17,19 +17,19 @@
 :root {
   /* Color Palette - Updated to use centralized color system */
   /* Pink palette - from colors.ts */
-  --color-pink-50: #FFF5F7;        /* Light pink background */
-  --color-pink-100: #FAE8ED;       /* Lavender blush */
-  --color-pink-200: #FDD5DF;       /* Mimi pink */
-  --color-pink-300: #EABEC3;       /* Main dusty pink */
-  --color-pink-400: #D9A5AC;       /* Darker dusty pink */
-  --color-pink-500: #C88B95;       /* Even darker dusty pink */
-  --color-pink-600: #B8727C;       /* Strong dusty pink */
+  --color-pink-50: #F7EFE8;        /* Light pink background */
+  --color-pink-100: #F0E2D6;       /* Lavender blush */
+  --color-pink-200: #E8D0BE;       /* Mimi pink */
+  --color-pink-300: #D8A48F;       /* Main dusty pink */
+  --color-pink-400: #BB8588;       /* Darker dusty pink */
+  --color-pink-500: #A06A6E;       /* Even darker dusty pink */
+  --color-pink-600: #8A4A50;       /* Strong dusty pink */
   --color-pink-700: #A6707B;       /* Navigation text */
   --color-pink-800: #8B5A65;       /* Main text pink (WCAG AA) */
 
   /* Dark theme colors */
   --color-dark-800: #1E293B;       /* Very dark gray */
-  --color-dark-900: #0F172A;       /* Almost black */
+  --color-dark-900: #1A2538;       /* Almost black */
 
   /* Base colors */
   --color-white: #FFFFFF;
@@ -80,7 +80,7 @@ select:focus {
   position: absolute;
   top: -40px;
   left: 0;
-  background: #B8727C; /* Darker dusty pink for better contrast */
+  background: #8A4A50; /* Darker dusty pink for better contrast */
   color: white;
   padding: 8px 16px;
   border-radius: 0 0 4px 0;
@@ -178,21 +178,21 @@ body {
   background: rgba(10, 15, 27, 0.4);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(234, 190, 195, 0.1);
+  border-bottom: 1px solid rgba(216, 164, 143, 0.1);
   box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
 }
 
 .navigation.scrolled {
-  background: rgba(255, 232, 239, 0.6);
-  border-bottom: 1px solid rgba(255, 194, 209, 0.2);
-  box-shadow: 0 4px 30px rgba(255, 194, 209, 0.12);
+  background: rgba(187, 133, 136, 0.6);
+  border-bottom: 1px solid rgba(187, 133, 136, 0.2);
+  box-shadow: 0 4px 30px rgba(187, 133, 136, 0.12);
 }
 
 .dark .navigation.scrolled {
   background: rgba(10, 15, 27, 0.6);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(234, 190, 195, 0.15);
+  border-bottom: 1px solid rgba(216, 164, 143, 0.15);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -451,17 +451,17 @@ body {
 
 /* Dark mode styles for hero action buttons */
 .dark .hero-action-btn {
-  color: #FDD5DF;
-  border-color: #EABEC3;
+  color: #E8D0BE;
+  border-color: #D8A48F;
 }
 
 .dark .hero-action-btn::before {
-  background: #EABEC3;
+  background: #D8A48F;
 }
 
 .dark .hero-action-btn:hover {
-  color: #0A0F1B;
-  border-color: #FDD5DF;
+  color: #1A2538;
+  border-color: #E8D0BE;
 }
 
 .hero-description {
@@ -520,7 +520,7 @@ body {
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(234, 190, 195, 0.3);
+  box-shadow: 0 3px 10px 	rgba(216, 164, 143, 0.3);
   outline: none;
 }
 
@@ -530,7 +530,7 @@ body {
 
 .scroll-down-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(234, 190, 195, 0.5);
+  box-shadow: 0 6px 20px 	rgba(216, 164, 143, 0.5);
 }
 
 /* Project Buttons */
@@ -545,7 +545,7 @@ body {
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(234, 190, 195, 0.4);
+  box-shadow: 0 4px 15px 	rgba(216, 164, 143, 0.4);
   outline: none;
 }
 
@@ -555,7 +555,7 @@ body {
 
 .project-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(234, 190, 195, 0.5);
+  box-shadow: 0 6px 20px 	rgba(216, 164, 143, 0.5);
 }
 
 .project-btn-outline {
@@ -574,8 +574,8 @@ body {
 
 .dark .project-btn-outline {
   background: rgb(31, 41, 55);
-  color: #EABEC3;
-  border-color: #D9A5AC;
+  color: #D8A48F;
+  border-color: #BB8588;
 }
 
 .project-btn-outline:focus {
@@ -585,11 +585,11 @@ body {
 .project-btn-outline:hover {
   background: var(--lavender-blush);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(234, 190, 195, 0.3);
+  box-shadow: 0 4px 15px rgba(216, 164, 143, 0.3);
 }
 
 .dark .project-btn-outline:hover {
-  background: rgba(234, 190, 195, 0.1);
+  background: rgba(216, 164, 143, 0.1);
 }
 
 /* Typewriter styles */
@@ -675,11 +675,11 @@ body {
   }
   
   .mobile-nav-tab:hover {
-    background: rgba(234, 190, 195, 0.1);
+    background: rgba(216, 164, 143, 0.1);
   }
   
   .dark .mobile-nav-tab:hover {
-    background: rgba(234, 190, 195, 0.05);
+    background: rgba(216, 164, 143, 0.05);
   }
   
   .section h2 {
@@ -794,4 +794,20 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+/* Nav name: readable in both modes, no glow */
+.signature-name {
+  color: #632024 !important;
+  -webkit-text-fill-color: #632024 !important;
+  text-shadow: none !important;
+  filter: none !important;
+  background-image: none !important;
+}
+
+.dark .signature-name {
+  color: #632024 !important;
+  -webkit-text-fill-color: #BB8588 !important;
+  text-shadow: none !important;
+  filter: none !important;
 }
