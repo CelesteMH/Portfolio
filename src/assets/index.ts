@@ -12,9 +12,7 @@ import profile6 from './profile6.jpeg';
 import profile7 from './profile7.jpeg';
 
 import comingSoon from './coming_soon.png';
-import dividerPng from './divider.PNG';
-import dividerWebp from './divider-original.webp';
-import divider from './divider-original.webp';
+
 
 // For backward compatibility
 const aboutMeJournal = aboutMeJournalPng;
@@ -39,9 +37,7 @@ export const mainAssets = {
   profile6,
   profile7,
   comingSoon,
-  divider,
-  dividerPng,
-  dividerWebp,
+
 };
 
 export {
@@ -57,9 +53,7 @@ export {
   profile6,
   profile7,
   comingSoon,
-  divider,
-  dividerPng,
-  dividerWebp,
+
 };
 
 export default {
